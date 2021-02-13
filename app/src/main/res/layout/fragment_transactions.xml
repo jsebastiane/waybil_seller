@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/roundedfragment_shape"
+        tools:context=".view.transactions.TransactionsFragment">
+
+        <ImageView
+            android:id="@+id/close_fragment_transactions"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+        <TextView
+            android:id="@+id/transactions_fragment_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Historial"
+            style="@style/FragmentHeaders"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/transactions_toggle_filters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transactions_fragment_header">
+
+            <ToggleButton
+                android:id="@+id/toggle_month"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="@drawable/category_selector_toggle"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@drawable/category_text_selector"
+                android:textOff="@null"
+                android:textOn="@null"
+                tools:text="Month" />
+
+            <ToggleButton
+                android:id="@+id/toggle_year"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="@drawable/category_selector_toggle"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@drawable/category_text_selector"
+                android:textOff="@null"
+                android:textOn="@null"
+                tools:text="Year" />
+
+            <ToggleButton
+                android:id="@+id/toggle_view"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/category_selector_toggle"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@drawable/category_text_selector"
+                android:visibility="gone"
+                android:textOff="View"
+                android:textOn="Summary"
+                tools:text="View" />
+
+
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/transaction_summaries_recycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subcategory_linearLayout" />
+
+        <TextView
+            android:id="@+id/no_data_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No data available"
+            style="@style/DarkFontBold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/subcategory_linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transactions_toggle_filters">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/years_filter_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal"/>
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:id="@+id/radio_group_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <RadioButton
+                        android:id="@+id/radio_jan"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="Jan"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_feb"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="Feb"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_march"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="Mar"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_apr"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="Apr"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_may"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="May"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_jun"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="Jun"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_jul"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="July"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_aug"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="Aug"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_sep"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="Sep"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_oct"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="Oct"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_nov"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="Nov"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RadioButton
+                        android:id="@+id/radio_dec"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/category_selector_toggle"
+                        android:button="@null"
+                        android:text="Dec"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@drawable/subcategory_text_selector"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                </RadioGroup>
+
+
+            </HorizontalScrollView>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/random_button"
+            android:background="@drawable/dark_button"
+            style="@style/WhiteFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/transactions_fragment_header"
+            app:layout_constraintEnd_toStartOf="@+id/close_fragment_transactions"
+            app:layout_constraintStart_toEndOf="@+id/transactions_fragment_header"
+            app:layout_constraintTop_toTopOf="@+id/transactions_fragment_header" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

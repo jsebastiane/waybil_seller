@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/roundedfragment_shape"
+        tools:context=".view.inventory.InventoryFragment">
+
+        <ImageView
+            android:id="@+id/close_fragment_inventory"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+        <TextView
+            android:id="@+id/inventory_fragment_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Inventario"
+            style="@style/FragmentHeaders"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_products"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorGray"
+            android:inputType="text"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            app:defaultQueryHint="Buscar productos"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toStartOf="@+id/add_product_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inventory_fragment_header" />
+
+
+        <LinearLayout
+            android:id="@+id/inventory_toggle_filters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_products">
+
+
+            <ToggleButton
+                android:id="@+id/toggle_brand"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/category_selector_toggle"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@drawable/category_text_selector"
+                android:textOff="Marca"
+                android:textOn="Marca" />
+
+            <ToggleButton
+                android:id="@+id/toggle_type"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/category_selector_toggle"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@drawable/category_text_selector"
+                android:textOff="Tipo"
+                android:textOn="Tipo" />
+
+            <ToggleButton
+                android:id="@+id/toggle_category"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/category_selector_toggle"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@drawable/category_text_selector"
+                android:textOff="Categoría"
+                android:textOn="Categoría" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_sub_categories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inventory_toggle_filters" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/product_list_recycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_sub_categories" />
+
+        <TextView
+            android:id="@+id/add_product_button"
+            style="@style/WhiteFontBold"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/dark_button"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:text="+"
+            app:layout_constraintBottom_toBottomOf="@+id/search_products"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_products" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

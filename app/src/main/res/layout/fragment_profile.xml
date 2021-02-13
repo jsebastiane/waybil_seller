@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/roundedfragment_shape"
+        tools:context=".view.profile.ProfileFragment">
+
+        <TextView
+            android:id="@+id/profile_fragment_header"
+            style="@style/FragmentHeaders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/account_details"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/close_fragment_profile"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_fragment_header">
+
+
+            <LinearLayout
+                android:id="@+id/linear_account_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/image_profilePage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/profile_image_header"
+                        style="@style/DarkFontItalic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Foto de perfil"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/pic_preview_profile"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/round_outline"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/ic_profile_icon" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/name_layout_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/businessName_header_profile"
+                        style="@style/DarkFontItalic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre de empresa"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/businessName_user_profile"
+                        style="@style/DarkFontBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:paddingVertical="9dp"
+                        android:text="-"
+                        android:textSize="16sp"
+                        android:theme="@style/Theme.MaterialComponents.Light" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/location_layout_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/location_header_profile"
+                        style="@style/DarkFontItalic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ubicacion"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/location_user_profile"
+                        style="@style/DarkFontBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:paddingVertical="9dp"
+                        android:text="-"
+                        android:textSize="16sp"
+                        android:theme="@style/Theme.MaterialComponents.Light" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/delivery_range_profileLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/deliveryRange_header_profile"
+                        style="@style/DarkFontItalic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Range (mi)"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/delivery_range_profile"
+                        style="@style/DarkFontBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:paddingVertical="9dp"
+                        android:text="0"
+                        android:textSize="16sp"
+                        android:theme="@style/Theme.MaterialComponents.Light" />
+
+                    <SeekBar
+                        android:id="@+id/test_seekBar"
+                        android:layout_width="match_parent"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:progressBackgroundTint="@color/colorAccent"
+                        android:progressTint="@color/colorPrimary"
+                        android:thumbTint="@color/colorPrimary"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/delivery_fee_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/delivery_fee_header"
+                        style="@style/DarkFontItalic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Fee"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/delivery_fee_profile"
+                        style="@style/DarkFontBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:paddingVertical="9dp"
+                        android:text="0"
+                        android:textSize="16sp"
+                        android:theme="@style/Theme.MaterialComponents.Light" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/seller_visibility"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/visibility_header"
+                        style="@style/DarkFontItalic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Visibility"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/visibility_text"
+                        style="@style/DarkFontBold"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="start"
+                        android:text="-"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/visibility_switch"
+                        android:layout_width="70dp"
+                        android:gravity="center"
+                        app:thumbTint="@color/colorPrimary"
+                        android:layout_height="wrap_content"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/action_buttons_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/manageSettings_profilePage"
+                        style="@style/WhiteFont"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="4dp"
+                        android:background="@drawable/dark_button"
+                        android:gravity="center"
+                        android:paddingHorizontal="8dp"
+                        android:text="@string/manage_settings"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/save_profilePage"
+                        style="@style/WhiteFont"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/dark_button"
+                        android:gravity="center"
+                        android:paddingHorizontal="8dp"
+                        android:text="Save Changes"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/profile_progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

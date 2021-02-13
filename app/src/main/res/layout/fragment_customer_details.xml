@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/roundedfragment_shape"
+        tools:context=".view.customers.CustomerDetailsFragment">
+
+        <TextView
+            android:id="@+id/customerName_Detailsfragment"
+            style="@style/FragmentHeaders"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="Tienda Don Juan"
+            android:gravity="start"
+            app:layout_constraintEnd_toStartOf="@+id/close_fragment_customerDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/close_fragment_customerDetails"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+        <LinearLayout
+            android:id="@+id/customerDetails_detailsFragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customerName_Detailsfragment"
+            android:background="@drawable/order_product_bg">
+
+            <TextView
+                android:id="@+id/customerDetails_address"
+                style="@style/DarkFont"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="top"
+                android:text="6a Avenida, Villa Nueva"
+                android:textSize="15sp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/customerDetails_phoneNumber"
+                style="@style/DarkFont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="+502 5562-0749"
+                android:layout_gravity="top"
+                android:layout_marginBottom="4dp"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+        <saymobile.company.saytech.util.CustomeNestedScrollView
+            android:id="@+id/customerDetails_scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customerDetails_detailsFragment">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <fragment
+                    android:id="@+id/customerDetails_map"
+                    android:name="saymobile.company.saytech.util.CustomSupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="4dp" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="24dp"
+                    android:checkedButton="@id/radioOverview"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioOverview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:text="Resumen"
+                        android:textAlignment="center"
+                        android:textColor="@drawable/category_inverseselector_toggle"
+                        android:textSize="15sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioOrders"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:text="Ordenes"
+                        android:textAlignment="center"
+                        android:textColor="@drawable/category_inverseselector_toggle"
+                        android:textSize="15sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioBilling"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:button="@null"
+                        android:text="Historial"
+                        android:textAlignment="center"
+                        android:textColor="@drawable/category_inverseselector_toggle"
+                        android:textSize="15sp" />
+
+                </RadioGroup>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="8dp">
+
+
+                    <TextView
+                        android:id="@+id/avg_order_size"
+                        style="@style/DarkFontItalic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center"
+                        android:text="Orden Promedio"
+                        app:layout_constraintBottom_toBottomOf="@+id/order_frequency"
+                        app:layout_constraintEnd_toStartOf="@+id/order_frequency"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/order_frequency" />
+
+                    <TextView
+                        android:id="@+id/order_frequency"
+                        style="@style/DarkFontItalic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="Frecuencia"
+                        app:layout_constraintEnd_toStartOf="@+id/average_spend"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toEndOf="@+id/avg_order_size"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/average_spend"
+                        style="@style/DarkFontItalic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        android:text="Gasto Promedio"
+                        app:layout_constraintBottom_toBottomOf="@+id/order_frequency"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/order_frequency"
+                        app:layout_constraintTop_toTopOf="@+id/order_frequency" />
+
+                    <TextView
+                        android:id="@+id/average_orderSize_figure"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        android:text="25"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="@+id/avg_order_size"
+                        app:layout_constraintStart_toStartOf="@+id/avg_order_size"
+                        app:layout_constraintTop_toTopOf="@+id/order_frequency_figure" />
+
+                    <TextView
+                        android:id="@+id/order_frequency_figure"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        android:text="3x"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="@+id/order_frequency"
+                        app:layout_constraintStart_toStartOf="@+id/order_frequency"
+                        app:layout_constraintTop_toBottomOf="@+id/order_frequency" />
+
+                    <TextView
+                        android:id="@+id/average_spend_figure"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        android:text="$100k"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="@+id/average_spend"
+                        app:layout_constraintStart_toStartOf="@+id/average_spend"
+                        app:layout_constraintTop_toTopOf="@+id/order_frequency_figure" />
+
+                    <TextView
+                        android:id="@+id/subheader_order_size"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="Productos"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="@+id/average_orderSize_figure"
+                        app:layout_constraintStart_toStartOf="@+id/average_orderSize_figure"
+                        app:layout_constraintTop_toBottomOf="@+id/average_orderSize_figure" />
+
+                    <TextView
+                        android:id="@+id/subheader_order_frequency"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="Cada sem."
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="@+id/order_frequency_figure"
+                        app:layout_constraintStart_toStartOf="@+id/order_frequency_figure"
+                        app:layout_constraintTop_toBottomOf="@+id/order_frequency_figure" />
+
+                    <TextView
+                        android:id="@+id/subheader_average_spend"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="Cada sem."
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="@+id/average_spend_figure"
+                        app:layout_constraintStart_toStartOf="@+id/average_spend_figure"
+                        app:layout_constraintTop_toBottomOf="@+id/average_spend_figure" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+        </saymobile.company.saytech.util.CustomeNestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
