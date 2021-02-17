@@ -1,6 +1,10 @@
 package saymobile.company.saytech.view
 
 import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +24,8 @@ import saymobile.company.saytech.util.loadImage
 import saymobile.company.saytech.view.home.HomeFragment
 import saymobile.company.saytech.view.home.HomeFragmentDirections
 
+private const val CHANNEL_ID = "ORDER_CHANNEL_ID"
+
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -32,6 +38,7 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+        createNotificationChannel()
         Firebase.messaging.isAutoInitEnabled = true
 
         getProfilePicture()
@@ -76,6 +83,26 @@ class DashboardActivity : AppCompatActivity() {
                     user_name_dashboard.text = currentUserProf.businessName
                 }
             }
+        }
+
+    }
+
+    //A notification channel must be created on startup if the device is running API 26 or greater
+    //This is for notifications if the app is in the foreground
+    private fun createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val name = getString(R.string.channel_name)
+            val descriptionsText = getString(R.string.channel_description)
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+                description = descriptionsText
+            }
+
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+
+            Log.d("Notification Channel", "Notification Channel Created")
         }
 
     }
