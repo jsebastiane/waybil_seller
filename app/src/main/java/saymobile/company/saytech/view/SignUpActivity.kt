@@ -84,12 +84,23 @@ class SignUpActivity : AppCompatActivity() {
         browse_images_signup.setOnClickListener { checkImagePermissions() }
 
         share_location_button.setOnClickListener {
-            getLocation()
+//          Check if location is enabled on device if so we start geopin activity otherwise
+            //we open settings to enable locations services
+            val lm = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                !lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+            ) {
+                locationSettingsPrompt()
+            } else {
+                startActivity(Intent(this, GeopinActivity::class.java))
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            }
         }
 
         deliveryRadius_seekBar_signUp.max = 30
 
-        deliveryRadius_seekBar_signUp.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+        deliveryRadius_seekBar_signUp.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 delivery_range_signUp.text = progress.toString()
             }
@@ -173,14 +184,17 @@ class SignUpActivity : AppCompatActivity() {
             return
         }
 
-        if(deliveryRadius.toInt() <= 0){
-            Toast.makeText(applicationContext, "Delivery range must be greater than 0",
-                Toast.LENGTH_SHORT).show()
+        if (deliveryRadius.toInt() <= 0) {
+            Toast.makeText(
+                applicationContext, "Delivery range must be greater than 0",
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
-        if(deliveryCost.isEmpty()){
-            Toast.makeText(applicationContext, "Enter delivery cost or make 0", Toast.LENGTH_SHORT).show()
+        if (deliveryCost.isEmpty()) {
+            Toast.makeText(applicationContext, "Enter delivery cost or make 0", Toast.LENGTH_SHORT)
+                .show()
         }
 
         if (password.isEmpty()) {
@@ -196,7 +210,7 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Passwords do not match", Toast.LENGTH_SHORT).show()
             return
         }
-        if ( productImage == null) {
+        if (productImage == null) {
             Toast.makeText(applicationContext, "Please upload a picture", Toast.LENGTH_SHORT).show()
             return
         }
@@ -218,8 +232,16 @@ class SignUpActivity : AppCompatActivity() {
         viewModel.currentUser.observe(this, Observer { currentUser ->
             currentUser?.let {
                 val user = User(
-                    currentUser.uid, businessName, businessAddress, phonenumber, userEmail, accountManager,
-                    Timestamp.now(), userLocation, deliveryCost, deliveryRadius
+                    currentUser.uid,
+                    businessName,
+                    businessAddress,
+                    phonenumber,
+                    userEmail,
+                    accountManager,
+                    Timestamp.now(),
+                    userLocation,
+                    deliveryCost,
+                    deliveryRadius
                 )
                 viewModel.createUserDatabase(user, productImage!!)
 
@@ -278,6 +300,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    //Results of image capture or image selected from gallery
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
@@ -290,7 +313,7 @@ class SignUpActivity : AppCompatActivity() {
             productImage = byteArray
         }
 
-         //If request was for an image from the gallery
+        //If request was for an image from the gallery
         if (requestCode == IMAGE_PICK_CODE && resultCode == Activity.RESULT_OK) {
             pic_preview_signup.setImageURI(data?.data)
 
@@ -322,99 +345,27 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
-    private fun getLocation() {
-        //Check if it returns null. If so maybe ask user to check location settings
-        mLocationRequest.apply {
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-            interval = 1000
-            fastestInterval = 1000
-        }
 
-        //Checking to see if we have permission to acess location
-        if (ContextCompat.checkSelfPermission(
-                this@SignUpActivity,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) !=
-            PackageManager.PERMISSION_GRANTED
-        ) {
-            /**
-             * check to see if are granted location permissions
-             * If true we continue to see if location services are on on the device
-             */
-            getLocationPermission()
-        } else {
-
-            //Checking if location is on in settings
-            //If location is turned on it just continues
-
-            /**
-             * code to see result. If ok was pressed then we return a number that confirms we can
-             * continue to the next lines
-             */
-            locationSettingsPrompt()
-
-            fusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, null)
-
-
-//            location_loading.visibility = View.VISIBLE
-            fusedLocationClient.lastLocation
-                .addOnSuccessListener { location: Location? ->
-                    location?.let {
-                        val currentLocation = GeoPoint(location.latitude, location.longitude)
-                        userLocation = currentLocation
-                        current_location.text = "${location.latitude}, ${location.longitude}"
-                    }
-
-                }.addOnCompleteListener {
-                    fusedLocationClient.removeLocationUpdates(mLocationCallback)
-                    println(userLocation)
-                }
-
-
-        }
-    }
 
     private fun locationSettingsPrompt() {
-        var lm = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
-            !lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-        ) {
-            val builder = AlertDialog.Builder(this)
-            builder.setMessage("Le das permiso a esta aplicacion para usar su ubicacion.")
-                .setNegativeButton("Cancelar") { dialog, _ ->
-                    dialog.dismiss()
-                }.setPositiveButton("Si") { _, _ ->
-                    val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-                    startActivity(intent)
 
-                }
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Do you give this app permission to use your location?")
+            .setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss()
+            }.setPositiveButton("Si") { _, _ ->
+                //Sends user to device location settings to switch on location services
+                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
 
-            builder.show()
+            }
 
-        }
+        builder.show()
+
 
     }
 
-    private fun getLocationPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(
-                this@SignUpActivity,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-        ) {
-            ActivityCompat.requestPermissions(
-                this@SignUpActivity,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1
-            )
-            getLocation()
-        } else {
-            ActivityCompat.requestPermissions(
-                this@SignUpActivity,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1
-            )
-            getLocation()
-        }
-    }
-
+    //On permission granted to read user storage user is sent to gallery
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,

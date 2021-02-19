@@ -2,31 +2,32 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="saymobile.company.saytech">
-    
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>-->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-    <uses-feature android:name="android.hardware.camera2"
-        android:required="true"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-    
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_say_icon"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_say_icon_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:requestLegacyExternalStorage="true">
+        android:theme="@style/AppTheme">
+        <activity android:name=".view.GeopinActivity" />
+
         <service
             android:name=".view.SignUpActivity"
             android:foregroundServiceType="location"
-            tools:ignore="Instantiatable">
-        </service>
-
+            tools:ignore="Instantiatable" />
         <service
             android:name=".util.MyFirebaseMessagingService"
             android:exported="false">
@@ -42,28 +43,25 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths">
-
-            </meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
 
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
-
-        <activity android:name=".view.SignUpActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation">
-
-        </activity>
-        <activity android:name=".view.DashboardActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation">
-            
-        </activity>
-        <activity android:name=".view.LoginActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation">
+        <activity
+            android:name=".view.SignUpActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.DashboardActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.LoginActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -74,19 +72,15 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_saytech_logo" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
-
         <meta-data
             android:name="firebase_messaging_auto_init_enabled"
             android:value="false" />
         <meta-data
             android:name="firebase_analytics_collection_enabled"
             android:value="false" />
-
-
     </application>
 
 </manifest>

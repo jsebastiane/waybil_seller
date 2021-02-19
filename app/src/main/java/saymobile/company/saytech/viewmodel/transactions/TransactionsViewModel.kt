@@ -141,10 +141,13 @@ class TransactionsViewModel : ViewModel() {
         }
 
         for (i in weekList) {
-            val minWeekDate = sdf.format(min(i))
-            val maxWeekDate = sdf.format(max(i))
-            val range = "${minWeekDate}-${maxWeekDate}"
-            weekRanges.add(range)
+            if(i.isNotEmpty()){
+                val minWeekDate = sdf.format(min(i))
+                val maxWeekDate = sdf.format(max(i))
+                val range = "${minWeekDate}-${maxWeekDate}"
+                weekRanges.add(range)
+            }
+
         }
         weekRangeStrings.value = weekRanges
 

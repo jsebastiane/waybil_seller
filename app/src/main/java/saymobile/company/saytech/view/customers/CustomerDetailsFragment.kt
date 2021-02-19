@@ -58,7 +58,7 @@ class CustomerDetailsFragment : Fragment(), OnMapReadyCallback {
             customerId = CustomerDetailsFragmentArgs.fromBundle(it).customerId
         }
 
-
+        //Child fragment manager is used as we are operating in a fragment activity with a map fragment
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.customerDetails_map) as CustomSupportMapFragment
         mapFragment.getMapAsync(this)

@@ -53,7 +53,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService(){
             .setSmallIcon(R.drawable.ic_saytech_logo)
             .setContentTitle(remoteMessage.notification?.title)
             .setContentText(remoteMessage.notification?.body)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setPriority(NotificationCompat.PRIORITY_MAX)
+//            .setDefaults(Notification.DEFAULT_ALL)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
@@ -64,16 +65,16 @@ class MyFirebaseMessagingService : FirebaseMessagingService(){
     }
 
     private fun sendRegistrationTokenToServer(token: String){
-        val tokenList = arrayListOf<String>(token)
+//        val tokenList = arrayListOf<String>(token)
         val mFirebaseDatabase = FirebaseFirestore.getInstance()
         val currentUser = FirebaseAuth.getInstance().currentUser
-        val tokenUpdate = hashMapOf<String, Any>("pushToken" to tokenList)
+        val tokenUpdate = hashMapOf<String, Any>("pushToken" to token)
         val userId = currentUser!!.uid
         mFirebaseDatabase.collection("users")
             .document(userId).update(tokenUpdate).addOnSuccessListener {
                 Log.d("pushTokenUpdate", "Successful")
             }.addOnFailureListener{
-                Log.d("pushTokenUpdate", "Failure")
+                Log.d("pushTokenUpdate", "Failed")
             }.addOnCompleteListener {
                 Log.d("pushTokenUpdate", "Completed")
 

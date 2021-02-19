@@ -1,17 +1,20 @@
 package saymobile.company.saytech.view.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 import saymobile.company.saytech.R
+import saymobile.company.saytech.view.LoginActivity
 
 class HomeFragment : Fragment() {
 

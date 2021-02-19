@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
         if (email_entry_login.text.isEmpty()) {
             Toast.makeText(
                 applicationContext,
-                "No hay direccion de correo electronico",
+                "No hay correo electronico",
                 Toast.LENGTH_SHORT
             ).show()
             return

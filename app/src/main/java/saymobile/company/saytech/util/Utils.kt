@@ -9,10 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.storage.StorageReference
 import saymobile.company.saytech.R
 import saymobile.company.saytech.model.GlideApp
 import java.text.DecimalFormat
+
+var temporaryGeoPoint: GeoPoint? = null
 
 fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }
@@ -54,5 +57,11 @@ fun formatCurrency(price: Double) : String {
     val decForm = DecimalFormat("Q#,###.00")
 
     return decForm.format(price)
+}
+
+//Temporarily stores GeoPoint for SignUp
+//Reset to null after SignUp
+fun tempGeoPoint(geoPoint: GeoPoint){
+    temporaryGeoPoint = geoPoint
 }
 
