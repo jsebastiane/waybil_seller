@@ -23,10 +23,13 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.GeoPoint
+import kotlinx.android.synthetic.main.activity_geopin.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.fragment_customer_details.*
 import saymobile.company.saytech.R
 import saymobile.company.saytech.util.CustomSupportMapFragment
+import saymobile.company.saytech.util.resetTempGeoPoint
+import saymobile.company.saytech.util.tempGeoPoint
 
 private const val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1
 private const val DEFAULT_ZOOM = 15
@@ -50,6 +53,15 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
+        save_geopoint_activity.setOnClickListener {
+            saveGeopinActivityPrompt()
+        }
+
+        cancel_geopoint_activity.setOnClickListener {
+            cancelGeopinActivity()
+        }
+
+
 
     }
 
@@ -61,6 +73,9 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
             mMap?.setOnCameraMoveListener {
                 val currentCenter = mMap!!.cameraPosition.target
                 userLocation = GeoPoint(currentCenter.latitude, currentCenter.longitude)
+                userLocation?.let {
+                     tempGeoPoint(it)
+                }
                 Log.d("Camera Movement", "New center is: $currentCenter")
             }
             //Center on user location here
@@ -94,6 +109,9 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
                                     lastKnownLocation!!.latitude,
                                     lastKnownLocation!!.longitude
                                 )
+                                userLocation?.let {
+                                    tempGeoPoint(it)
+                                }
                             }
                         } else {
                             Log.d("Location", "Current location is null. Using defaults.")
@@ -127,6 +145,7 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
             == PackageManager.PERMISSION_GRANTED
         ) {
             locationPermissionGranted = true
+            updateLocationUI()
         } else {
             ActivityCompat.requestPermissions(
                 this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
@@ -169,6 +188,34 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
         } catch (e: SecurityException) {
             Log.e("Exception: %s", e.message, e)
         }
+    }
+
+    private fun saveGeopinActivityPrompt() {
+
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Are you sure this is your location?")
+            .setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss()
+            }.setPositiveButton("Si") { _, _ ->
+                //Sends user to device location settings to switch on location services
+                finish()
+
+            }
+
+        builder.show()
+
+
+    }
+
+    private fun cancelGeopinActivity(){
+        resetTempGeoPoint()
+        finish()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        resetTempGeoPoint()
+        finish()
     }
 
 
