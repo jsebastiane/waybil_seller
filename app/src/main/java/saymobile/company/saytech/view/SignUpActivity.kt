@@ -39,6 +39,8 @@ import kotlinx.android.synthetic.main.fragment_add_product_inventory.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import saymobile.company.saytech.R
 import saymobile.company.saytech.model.user.User
+import saymobile.company.saytech.util.getCurrentLocation
+import saymobile.company.saytech.util.resetTempGeoPoint
 import saymobile.company.saytech.viewmodel.signup.SignUpViewModel
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -382,5 +384,16 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        userLocation = getCurrentLocation()
+        resetTempGeoPoint()
+        if(userLocation == null){
+            geolocation_status_signup.setImageResource(R.drawable.warning_icon)
+        }else{
+            geolocation_status_signup.setImageResource(R.drawable.checkmark_icon)
+        }
     }
 }

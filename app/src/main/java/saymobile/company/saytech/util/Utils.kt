@@ -65,3 +65,11 @@ fun tempGeoPoint(geoPoint: GeoPoint){
     temporaryGeoPoint = geoPoint
 }
 
+fun getCurrentLocation(): GeoPoint?{
+    return temporaryGeoPoint
+}
+
+fun resetTempGeoPoint(){
+    temporaryGeoPoint = null
+}
+
