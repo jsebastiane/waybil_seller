@@ -25,7 +25,6 @@ android {
             properties.load(rootProject.file("local.properties").newDataInputStream())
         }
         manifestPlaceholders = [ mapsApiKey : properties.getProperty("MAPS_API_KEY", "")]
-
     }
 
     buildTypes {

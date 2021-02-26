@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryWhite"
     tools:context=".view.SignUpActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,9 +22,7 @@
             android:id="@+id/say_word_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="6dp"
             android:fontFamily="@font/astro_space"
             android:gravity="center_vertical"
             android:text="S a y"
@@ -40,9 +38,8 @@
             android:id="@+id/tech_word"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="5dp"
             android:fontFamily="@font/astro_space"
             android:text="t e c h"
             android:textColor="@color/colorLightBlueLogo"
@@ -57,13 +54,12 @@
 
     <TextView
         android:id="@+id/signup_header_activity"
-        style="@style/WhiteFont"
+        style="@style/FragmentHeaders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Regístrate"
-        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_logo_header" />
 
@@ -71,7 +67,7 @@
         android:id="@+id/close_activity_signup"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signup_logo_header"
@@ -109,7 +105,7 @@
 
                 <TextView
                     android:id="@+id/business_name_header"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontItalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Nombre de empresa"
@@ -117,11 +113,11 @@
 
                 <EditText
                     android:id="@+id/business_name_signup"
-                    style="@style/WhiteFont"
+                    style="@style/DarkFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/information_fields_light"
+                    android:background="@drawable/information_fields"
                     android:ems="10"
                     android:hint="Distruidora ejemplo..."
                     android:inputType="textPersonName"
@@ -142,7 +138,7 @@
 
                 <TextView
                     android:id="@+id/account_manager_header"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontItalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Adminstrado de cuenta"
@@ -150,11 +146,11 @@
 
                 <EditText
                     android:id="@+id/account_manager_signup"
-                    style="@style/WhiteFont"
+                    style="@style/DarkFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/information_fields_light"
+                    android:background="@drawable/information_fields"
                     android:ems="10"
                     android:hint="Ej. Ricardo Arjona"
                     android:inputType="textPersonName"
@@ -175,7 +171,7 @@
 
                 <TextView
                     android:id="@+id/email_fillin_header"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontItalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/email_login"
@@ -183,11 +179,11 @@
 
                 <EditText
                     android:id="@+id/email_fillin_signup"
-                    style="@style/WhiteFont"
+                    style="@style/DarkFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/information_fields_light"
+                    android:background="@drawable/information_fields"
                     android:ems="10"
                     android:hint="@string/email_login"
                     android:inputType="textEmailAddress"
@@ -208,7 +204,7 @@
 
                 <TextView
                     android:id="@+id/phone_fillin_header"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontItalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Numero de telefono"
@@ -216,11 +212,11 @@
 
                 <EditText
                     android:id="@+id/phone_fillin_signup"
-                    style="@style/WhiteFont"
+                    style="@style/DarkFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/information_fields_light"
+                    android:background="@drawable/information_fields"
                     android:ems="10"
                     android:hint="Numero de telefono"
                     android:inputType="phone"
@@ -241,7 +237,7 @@
 
                 <TextView
                     android:id="@+id/address_fillin_header"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontItalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Direccion"
@@ -249,11 +245,11 @@
 
                 <EditText
                     android:id="@+id/address_fillin_signup"
-                    style="@style/WhiteFont"
+                    style="@style/DarkFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/information_fields_light"
+                    android:background="@drawable/information_fields"
                     android:ems="10"
                     android:hint="Direccion"
                     android:inputType="textPostalAddress"
@@ -268,13 +264,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
                 android:layout_marginEnd="24dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/deliveryRange_header_signUp"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontItalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Delivery Range (mi)"
@@ -282,7 +277,7 @@
 
                 <TextView
                     android:id="@+id/delivery_range_signUp"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -296,9 +291,9 @@
                     android:id="@+id/deliveryRadius_seekBar_signUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:progressBackgroundTint="@color/colorPrimaryWhite"
-                    android:progressTint="@color/colorAccent"
-                    android:thumbTint="@color/colorPrimaryWhite"
+                    android:progressBackgroundTint="@color/colorAccent"
+                    android:progressTint="@color/colorPrimary"
+                    android:thumbTint="@color/colorPrimary"
                     />
 
 
@@ -316,7 +311,7 @@
 
                 <TextView
                     android:id="@+id/deliveryCost_fillin_header"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontItalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Delivery Cost"
@@ -324,11 +319,11 @@
 
                 <EditText
                     android:id="@+id/deliveryCost_fillin_signup"
-                    style="@style/WhiteFont"
+                    style="@style/DarkFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/information_fields_light"
+                    android:background="@drawable/information_fields"
                     android:ems="10"
                     android:hint="Delivery Cost"
                     android:inputType="numberDecimal"
@@ -349,7 +344,7 @@
 
                 <TextView
                     android:id="@+id/password_fillin_header"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontItalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/password_login"
@@ -357,11 +352,11 @@
 
                 <EditText
                     android:id="@+id/password_fillin_signup"
-                    style="@style/WhiteFont"
+                    style="@style/DarkFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/information_fields_light"
+                    android:background="@drawable/information_fields"
                     android:ems="10"
                     android:hint="@string/password_login"
                     android:inputType="textPassword"
@@ -382,7 +377,7 @@
 
                 <TextView
                     android:id="@+id/confirm_password_fillin_header"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontItalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Repetir Contraseña"
@@ -390,11 +385,11 @@
 
                 <EditText
                     android:id="@+id/confirm_password_fillin_signup"
-                    style="@style/WhiteFont"
+                    style="@style/DarkFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/information_fields_light"
+                    android:background="@drawable/information_fields"
                     android:ems="10"
                     android:hint="Repetir Contraseña"
                     android:inputType="textPassword"
@@ -410,7 +405,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@drawable/information_fields_light"
+                android:background="@drawable/information_fields"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -431,7 +426,8 @@
 
                     <TextView
                         android:id="@+id/browse_images_signup"
-                        style="@style/WhiteFontItalic"
+                        style="@style/DarkFontItalic"
+                        android:background="@drawable/information_fields"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -450,10 +446,11 @@
 
                     <TextView
                         android:id="@+id/capture_image_signup"
-                        style="@style/WhiteFontItalic"
+                        style="@style/DarkFontItalic"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:background="@drawable/information_fields"
                         android:gravity="center"
                         android:text="Tomar Foto"
                         android:textSize="16sp" />
@@ -464,7 +461,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/loaction_layout"
+                android:id="@+id/location_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -475,10 +472,10 @@
 
                 <TextView
                     android:id="@+id/location_label"
-                    style="@style/WhiteFontItalic"
+                    style="@style/DarkFontItalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ubicacion"
+                    android:text="@string/location"
                     android:textSize="16sp" />
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -488,14 +485,14 @@
                     <TextView
                         android:id="@+id/share_location_button"
                         android:layout_width="0dp"
-                        style="@style/WhiteFont"
+                        style="@style/DarkFont"
                         android:text="Compartir Ubicacion"
                         android:gravity="center"
                         android:layout_height="60dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="4dp"
                         android:layout_weight="3"
-                        android:background="@drawable/information_fields_light"/>
+                        android:background="@drawable/information_fields"/>
 
 
                     <ImageView
@@ -507,7 +504,6 @@
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/warning_icon" />
 
-
                 </LinearLayout>
 
             </LinearLayout>
@@ -517,8 +513,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="32dp"
                 android:layout_marginEnd="24dp"
+                android:layout_marginBottom="32dp"
                 android:orientation="horizontal">
 
 
@@ -528,23 +524,23 @@
                     android:layout_height="50dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:background="@drawable/dark_button"
+                    android:background="@drawable/light_button"
                     android:gravity="center"
                     android:text="Cancelar"
-                    android:textAppearance="@style/WhiteFont"
+                    android:textAppearance="@style/DarkFont"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/save_signup"
-                    style="@style/DarkFont"
+                    style="@style/WhiteFont"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@drawable/light_button"
+                    android:background="@drawable/dark_button"
                     android:gravity="center"
-                    android:text="Register"
-                    android:textAppearance="@style/DarkFont"
+                    android:text="Registar"
+                    android:textAppearance="@style/WhiteFont"
                     android:textSize="18sp" />
 
             </LinearLayout>

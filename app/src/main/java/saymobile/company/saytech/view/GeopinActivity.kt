@@ -26,6 +26,7 @@ import com.google.firebase.firestore.GeoPoint
 import kotlinx.android.synthetic.main.activity_geopin.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.fragment_customer_details.*
+import kotlinx.coroutines.delay
 import saymobile.company.saytech.R
 import saymobile.company.saytech.util.CustomSupportMapFragment
 import saymobile.company.saytech.util.resetTempGeoPoint
@@ -61,9 +62,8 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
             cancelGeopinActivity()
         }
 
-
-
     }
+
 
     override fun onMapReady(googleMap: GoogleMap?) {
         if (googleMap != null) {
@@ -74,7 +74,7 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
                 val currentCenter = mMap!!.cameraPosition.target
                 userLocation = GeoPoint(currentCenter.latitude, currentCenter.longitude)
                 userLocation?.let {
-                     tempGeoPoint(it)
+                    tempGeoPoint(it)
                 }
                 Log.d("Camera Movement", "New center is: $currentCenter")
             }
@@ -88,40 +88,36 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
          * cases when a location is not available.
          */
         try {
-            for (i in 0..4) {
-
-                if (locationPermissionGranted) {
-                    val locationResult = fusedLocationProviderClient.lastLocation
-                    locationResult.addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            // Set the map's camera position to the current location of the device.
-                            lastKnownLocation = task.result
-                            if (lastKnownLocation != null) {
-                                mMap?.moveCamera(
-                                    CameraUpdateFactory.newLatLngZoom(
-                                        LatLng(
-                                            lastKnownLocation!!.latitude,
-                                            lastKnownLocation!!.longitude
-                                        ), DEFAULT_ZOOM.toFloat()
-                                    )
-                                )
-                                userLocation = GeoPoint(
-                                    lastKnownLocation!!.latitude,
-                                    lastKnownLocation!!.longitude
-                                )
-                                userLocation?.let {
-                                    tempGeoPoint(it)
-                                }
-                            }
-                        } else {
-                            Log.d("Location", "Current location is null. Using defaults.")
-                            Log.e("Location", "Exception: %s", task.exception)
+            if (locationPermissionGranted) {
+                val locationResult = fusedLocationProviderClient.lastLocation
+                locationResult.addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Set the map's camera position to the current location of the device.
+                        lastKnownLocation = task.result
+                        Log.d("CurrentUserLocation", "Location: $lastKnownLocation")
+                        if (lastKnownLocation != null) {
                             mMap?.moveCamera(
-                                CameraUpdateFactory
-                                    .newLatLngZoom(defaultLocation, DEFAULT_ZOOM.toFloat())
+                                CameraUpdateFactory.newLatLngZoom(
+                                    LatLng(
+                                        lastKnownLocation!!.latitude,
+                                        lastKnownLocation!!.longitude
+                                    ), DEFAULT_ZOOM.toFloat()
+                                )
                             )
-                            mMap?.uiSettings?.isMyLocationButtonEnabled = false
+                            userLocation = GeoPoint(
+                                lastKnownLocation!!.latitude,
+                                lastKnownLocation!!.longitude
+                            )
+                            userLocation?.let{
+                                tempGeoPoint(it)
+                            }
                         }
+                    } else {
+                        Log.d("Location", "Current location is null. Using defaults.")
+                        Log.e("Location", "Exception: %s", task.exception)
+                        mMap?.moveCamera(CameraUpdateFactory
+                                .newLatLngZoom(defaultLocation, DEFAULT_ZOOM.toFloat()))
+                        mMap?.uiSettings?.isMyLocationButtonEnabled = false
                     }
                 }
             }
@@ -169,10 +165,12 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
         updateLocationUI()
+        //On providing location permissions recenter map
     }
 
     private fun updateLocationUI() {
         if (mMap == null) {
+            Log.d("mMap Result", "mMap is null")
             return
         }
         try {
@@ -197,7 +195,6 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
             .setNegativeButton("Cancelar") { dialog, _ ->
                 dialog.dismiss()
             }.setPositiveButton("Si") { _, _ ->
-                //Sends user to device location settings to switch on location services
                 finish()
 
             }
