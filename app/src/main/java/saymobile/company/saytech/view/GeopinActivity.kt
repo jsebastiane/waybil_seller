@@ -195,7 +195,6 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
             .setNegativeButton("Cancelar") { dialog, _ ->
                 dialog.dismiss()
             }.setPositiveButton("Si") { _, _ ->
-                //Sends user to device location settings to switch on location services
                 finish()
 
             }
