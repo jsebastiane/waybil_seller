@@ -23,11 +23,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.GeoPoint
+import kotlinx.android.synthetic.main.activity_geopin.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.fragment_customer_details.*
-import kotlinx.coroutines.delay
 import saymobile.company.saytech.R
 import saymobile.company.saytech.util.CustomSupportMapFragment
+import saymobile.company.saytech.util.resetTempGeoPoint
 import saymobile.company.saytech.util.tempGeoPoint
 
 private const val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1
@@ -52,12 +53,16 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
+        save_geopoint_activity.setOnClickListener {
+            saveGeopinActivityPrompt()
+        }
 
-    }
+        cancel_geopoint_activity.setOnClickListener {
+            cancelGeopinActivity()
+        }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
+
+
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
@@ -68,7 +73,9 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
             mMap?.setOnCameraMoveListener {
                 val currentCenter = mMap!!.cameraPosition.target
                 userLocation = GeoPoint(currentCenter.latitude, currentCenter.longitude)
-                tempGeoPoint(userLocation!!)
+                userLocation?.let {
+                     tempGeoPoint(it)
+                }
                 Log.d("Camera Movement", "New center is: $currentCenter")
             }
             //Center on user location here
@@ -81,34 +88,40 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
          * cases when a location is not available.
          */
         try {
-            if (locationPermissionGranted) {
-                val locationResult = fusedLocationProviderClient.lastLocation
-                locationResult.addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Set the map's camera position to the current location of the device.
-                        lastKnownLocation = task.result
-                        Log.d("CurrentUserLocation", "Location: $lastKnownLocation")
-                        if (lastKnownLocation != null) {
-                            mMap?.moveCamera(
-                                CameraUpdateFactory.newLatLngZoom(
-                                    LatLng(
-                                        lastKnownLocation!!.latitude,
-                                        lastKnownLocation!!.longitude
-                                    ), DEFAULT_ZOOM.toFloat()
+            for (i in 0..4) {
+
+                if (locationPermissionGranted) {
+                    val locationResult = fusedLocationProviderClient.lastLocation
+                    locationResult.addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Set the map's camera position to the current location of the device.
+                            lastKnownLocation = task.result
+                            if (lastKnownLocation != null) {
+                                mMap?.moveCamera(
+                                    CameraUpdateFactory.newLatLngZoom(
+                                        LatLng(
+                                            lastKnownLocation!!.latitude,
+                                            lastKnownLocation!!.longitude
+                                        ), DEFAULT_ZOOM.toFloat()
+                                    )
                                 )
+                                userLocation = GeoPoint(
+                                    lastKnownLocation!!.latitude,
+                                    lastKnownLocation!!.longitude
+                                )
+                                userLocation?.let {
+                                    tempGeoPoint(it)
+                                }
+                            }
+                        } else {
+                            Log.d("Location", "Current location is null. Using defaults.")
+                            Log.e("Location", "Exception: %s", task.exception)
+                            mMap?.moveCamera(
+                                CameraUpdateFactory
+                                    .newLatLngZoom(defaultLocation, DEFAULT_ZOOM.toFloat())
                             )
-                            userLocation = GeoPoint(
-                                lastKnownLocation!!.latitude,
-                                lastKnownLocation!!.longitude
-                            )
-                            tempGeoPoint(userLocation!!)
+                            mMap?.uiSettings?.isMyLocationButtonEnabled = false
                         }
-                    } else {
-                        Log.d("Location", "Current location is null. Using defaults.")
-                        Log.e("Location", "Exception: %s", task.exception)
-                        mMap?.moveCamera(CameraUpdateFactory
-                                .newLatLngZoom(defaultLocation, DEFAULT_ZOOM.toFloat()))
-                        mMap?.uiSettings?.isMyLocationButtonEnabled = false
                     }
                 }
             }
@@ -156,12 +169,10 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
         updateLocationUI()
-        //On providing location permissions recenter map
     }
 
     private fun updateLocationUI() {
         if (mMap == null) {
-            Log.d("mMap Result", "mMap is null")
             return
         }
         try {
@@ -177,6 +188,34 @@ class GeopinActivity : AppCompatActivity(), OnMapReadyCallback {
         } catch (e: SecurityException) {
             Log.e("Exception: %s", e.message, e)
         }
+    }
+
+    private fun saveGeopinActivityPrompt() {
+
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Are you sure this is your location?")
+            .setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss()
+            }.setPositiveButton("Si") { _, _ ->
+                //Sends user to device location settings to switch on location services
+                finish()
+
+            }
+
+        builder.show()
+
+
+    }
+
+    private fun cancelGeopinActivity(){
+        resetTempGeoPoint()
+        finish()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        resetTempGeoPoint()
+        finish()
     }
 
 
