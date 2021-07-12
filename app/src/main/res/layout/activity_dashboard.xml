@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/gradient_primary_color"
     tools:context=".view.DashboardActivity">
 
     <LinearLayout
@@ -27,7 +27,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
-                android:background="@color/colorPrimaryLightField"
+                android:background="@drawable/shadow_dark_button"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/home_button"
@@ -37,6 +37,7 @@
                     android:id="@+id/user_name_dashboard"
                     style="@style/WhiteFont"
                     android:layout_width="0dp"
+                    android:maxLines="1"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center"
@@ -44,26 +45,51 @@
                     android:textSize="14sp" />
 
                 <ImageView
-                    android:id="@+id/profile_imageView"
-                    android:layout_width="0dp"
+                    android:id="@+id/profileWarning_icon"
+                    android:layout_width="30dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/filler_box" />
+                    android:padding="4dp"
+                    app:srcCompat="@android:drawable/stat_notify_error" />
+
 
             </LinearLayout>
 
-            <ImageView
+            <LinearLayout
                 android:id="@+id/home_button"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:padding="17dp"
                 app:layout_constraintEnd_toStartOf="@+id/profile_bar_dashboard"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/profile_bar_dashboard"
-                app:srcCompat="@drawable/logo_image" />
+                app:layout_constraintTop_toTopOf="@+id/profile_bar_dashboard">
+
+                <TextView
+                    style="@style/LogoFont"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="way"
+                    android:textColor="@color/colorPrimaryWhite"
+                    android:textSize="20sp"
+
+                    />
+
+                <TextView
+                    style="@style/LogoFont"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:text="bil"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+
 
 
 

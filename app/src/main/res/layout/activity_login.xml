@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/gradient_primary_color"
     tools:context=".view.LoginActivity">
 
     <TextView
@@ -14,9 +14,9 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/astro_space"
         android:gravity="center_vertical"
-        android:text="S a y"
+        android:text="w a y"
         android:textColor="@color/colorPrimaryWhite"
-        android:textSize="45sp"
+        android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/linear_login"
         app:layout_constraintEnd_toStartOf="@+id/tech_word"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -29,6 +29,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:orientation="vertical"
@@ -119,6 +120,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/forgot_password"
             android:textSize="14sp" />
+
         <TextView
             android:id="@+id/error_login"
             style="@style/WhiteFont"
@@ -126,9 +128,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
-            android:visibility="gone"
-            android:text="Error logging into account"
-            android:textSize="14sp" />
+            android:text="@string/error_logging_into_account"
+            android:textSize="14sp"
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -138,6 +140,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:padding="4dp"
         android:text="@string/sign_up_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -183,11 +186,11 @@
         android:id="@+id/tech_word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="6dp"
         android:fontFamily="@font/astro_space"
-        android:text="t e c h"
-        android:textColor="@color/colorLightBlueLogo"
-        android:textSize="45sp"
+        android:text="b i l"
+        android:textColor="@color/colorAccent"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="@+id/say_word"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/say_word"

@@ -6,7 +6,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
         tools:context=".view.home.HomeFragment">
 
 
@@ -35,16 +34,16 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="6dp"
-                app:srcCompat="@drawable/ic_icon_ordersii" />
+                app:srcCompat="@drawable/ic_orders_iconii" />
 
             <TextView
                 android:id="@+id/orders_textview"
                 style="@style/DarkFont"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Órdenes" />
+                android:text="@string/orders" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,8 +78,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="18sp"
-                android:text="Clientes" />
+                android:textSize="16sp"
+                android:text="@string/customers_string" />
         </LinearLayout>
 
         <LinearLayout
@@ -114,8 +113,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="18sp"
-                android:text="Historial" />
+                android:textSize="16sp"
+                android:text="@string/history" />
         </LinearLayout>
 
         <LinearLayout
@@ -150,9 +149,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:textSize="18sp"
-                android:text="Inventario" />
+                android:textSize="16sp"
+                android:text="@string/inventory" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/visibilityWarning_message_home"
+            style="@style/WhiteFont"
+            android:textSize="14dp"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/visibility_home_warning"
+            app:layout_constraintBottom_toTopOf="@+id/orders_button_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

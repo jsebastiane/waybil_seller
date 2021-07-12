@@ -37,67 +37,73 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:background="@color/colorGray"
+            android:background="@drawable/grey_transparent_button"
             android:inputType="text"
             android:theme="@style/Theme.MaterialComponents.Light"
-            app:defaultQueryHint="Buscar productos"
+            app:defaultQueryHint="@string/search_for_product"
             app:iconifiedByDefault="false"
             app:layout_constraintEnd_toStartOf="@+id/add_product_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inventory_fragment_header" />
 
 
-        <LinearLayout
+        <HorizontalScrollView
             android:id="@+id/inventory_toggle_filters"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="39dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_products">
 
-
-            <ToggleButton
-                android:id="@+id/toggle_brand"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/category_selector_toggle"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@drawable/category_text_selector"
-                android:textOff="Marca"
-                android:textOn="Marca" />
+                android:orientation="horizontal" >
 
-            <ToggleButton
-                android:id="@+id/toggle_type"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/category_selector_toggle"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@drawable/category_text_selector"
-                android:textOff="Tipo"
-                android:textOn="Tipo" />
+                <ToggleButton
+                    android:id="@+id/toggle_brand"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/category_selector_toggle"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="@drawable/category_text_selector"
+                    android:textOff="@string/product_brand"
+                    android:textOn="@string/product_brand" />
 
-            <ToggleButton
-                android:id="@+id/toggle_category"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/category_selector_toggle"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@drawable/category_text_selector"
-                android:textOff="Categoría"
-                android:textOn="Categoría" />
-        </LinearLayout>
+                <ToggleButton
+                    android:id="@+id/toggle_type"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/category_selector_toggle"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="@drawable/category_text_selector"
+                    android:textOff="@string/product_type"
+                    android:textOn="@string/product_type" />
+
+                <ToggleButton
+                    android:id="@+id/toggle_category"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/category_selector_toggle"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="@drawable/category_text_selector"
+                    android:textOff="@string/product_category"
+                    android:textOn="@string/product_category" />
+
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_sub_categories"

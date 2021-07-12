@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/say_navigation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/say_navigation"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/transactionsFragment"
-        android:name="saymobile.company.saytech.view.transactions.TransactionsFragment"
+        android:name="waybilmobile.company.waybil.view.transactions.TransactionsFragment"
+        tools:layout="@layout/fragment_transactions"
         android:label="TransactionsFragment" >
         <action
             android:id="@+id/action_transactionsFragment_to_transactionDetails"
@@ -17,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/ordersFragment"
-        android:name="saymobile.company.saytech.view.orders.OrdersFragment"
+        android:name="waybilmobile.company.waybil.view.orders.OrdersFragment"
         android:label="OrdersFragment" >
         <action
             android:id="@+id/action_ordersFragment_to_orderDetailsFragment"
@@ -29,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/customersFragment"
-        android:name="saymobile.company.saytech.view.customers.CustomersFragment"
+        android:name="waybilmobile.company.waybil.view.customers.CustomersFragment"
         android:label="CustomersFragment" >
         <action
             android:id="@+id/action_customersFragment_to_customerDetailsFragment"
@@ -41,8 +44,9 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="saymobile.company.saytech.view.home.HomeFragment"
-        android:label="HomeFragment" >
+        android:name="waybilmobile.company.waybil.view.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_ordersFragment"
             app:destination="@id/ordersFragment"
@@ -81,7 +85,7 @@
     </fragment>
     <fragment
         android:id="@+id/inventoryFragment"
-        android:name="saymobile.company.saytech.view.inventory.InventoryFragment"
+        android:name="waybilmobile.company.waybil.view.inventory.InventoryFragment"
         android:label="InventoryFragment" >
 
         <action
@@ -101,7 +105,7 @@
     </fragment>
     <fragment
         android:id="@+id/productFragment"
-        android:name="saymobile.company.saytech.view.product.ProductFragment"
+        android:name="waybilmobile.company.waybil.view.product.ProductFragment"
         android:label="ProductFragment" >
 
         <argument
@@ -112,7 +116,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="saymobile.company.saytech.view.profile.ProfileFragment"
+        android:name="waybilmobile.company.waybil.view.profile.ProfileFragment"
         android:label="ProfileFragment" >
         <action
             android:id="@+id/action_profileFragment_to_manageAccountFragment"
@@ -121,10 +125,17 @@
             app:exitAnim="@anim/slide_down"
             app:popEnterAnim="@anim/slide_up"
             app:popExitAnim="@anim/slide_down" />
+        <action
+            android:id="@+id/action_profileFragment_to_inviteClient"
+            app:destination="@id/inviteClient"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
     </fragment>
     <fragment
         android:id="@+id/customerDetailsFragment"
-        android:name="saymobile.company.saytech.view.customers.CustomerDetailsFragment"
+        android:name="waybilmobile.company.waybil.view.customers.CustomerDetailsFragment"
         android:label="CustomerDetailsFragment" >
 
         <argument
@@ -135,7 +146,7 @@
     </fragment>
     <fragment
         android:id="@+id/orderDetailsFragment"
-        android:name="saymobile.company.saytech.view.orders.OrderDetailsFragment"
+        android:name="waybilmobile.company.waybil.view.orders.OrderDetailsFragment"
         android:label="OrderDetailsFragment" >
 
         <argument
@@ -146,50 +157,18 @@
     </fragment>
     <fragment
         android:id="@+id/addProductInventory"
-        android:name="saymobile.company.saytech.view.inventory.AddProductInventory"
+        android:name="waybilmobile.company.waybil.view.inventory.AddProductInventory"
         android:label="AddProductInventory" />
     <fragment
-        android:id="@+id/transactionDetails"
-        android:name="saymobile.company.saytech.view.transactions.TransactionDetails"
-        android:label="TransactionDetails" >
-        <argument
-            android:name="weekNumber"
-            android:defaultValue="0"
-            app:argType="string"/>
-        <argument
-            android:name="currentMonth"
-            android:defaultValue="0"
-            app:argType="integer"/>
-        <argument
-            android:name="currentYear"
-            android:defaultValue="0"
-            app:argType="integer"/>
-        <argument
-            android:name="received"
-            android:defaultValue="0"
-            app:argType="string"/>
-        <argument
-            android:name="completed"
-            android:defaultValue="0"
-            app:argType="string"/>
-        <argument
-            android:name="weekTotal"
-            android:defaultValue="0"
-            app:argType="string"/>
-        <argument
-            android:name="weekRanges"
-            android:defaultValue="0"
-            app:argType="string"/>
-        <action
-            android:id="@+id/action_transactionDetails_to_transactionViewSpecifics"
-            app:destination="@id/transactionViewSpecifics" />
-    </fragment>
-    <fragment
-        android:id="@+id/transactionViewSpecifics"
-        android:name="saymobile.company.saytech.view.transactions.TransactionViewSpecifics"
-        android:label="TransactionViewSpecifics" />
-    <fragment
         android:id="@+id/manageAccountFragment"
-        android:name="saymobile.company.saytech.view.profile.ManageAccountFragment"
+        android:name="waybilmobile.company.waybil.view.profile.ManageAccountFragment"
         android:label="ManageAccountFragment" />
+    <fragment
+        android:id="@+id/inviteClient"
+        android:name="waybilmobile.company.waybil.view.profile.InviteClient"
+        android:label="InviteClient" />
+    <fragment
+        android:id="@+id/transactionDetails"
+        android:name="waybilmobile.company.waybil.view.transactions.TransactionDetails"
+        android:label="TransactionDetails" />
 </navigation>

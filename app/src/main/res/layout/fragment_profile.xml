@@ -7,12 +7,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/roundedfragment_shape"
-        tools:context=".view.profile.ProfileFragment">
+        android:background="@drawable/rounded_fragment_dark"
+        tools:context=".view.profile.ProfileFragment"
+        >
 
         <TextView
             android:id="@+id/profile_fragment_header"
-            style="@style/FragmentHeaders"
+            style="@style/FragmentHeadersLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -31,114 +32,259 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_close" />
 
+
+        <LinearLayout
+            android:id="@+id/profile_topBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/profile_fragment_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/pic_preview_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/round_outline"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+
+                <LinearLayout
+                    android:id="@+id/editImage_profileLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/changeImage_button"
+                        android:layout_width="100dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="2dp"
+                        android:gravity="center"
+                        android:textSize="14sp"
+                        android:background="@drawable/information_fields_light"
+                        android:text="@string/change"/>
+
+                    <TextView
+                        android:id="@+id/removeImage_button"
+                        android:layout_width="100dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/information_fields_light"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:textSize="14sp"
+                        android:text="@string/delete"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/addImage_suggestion"
+                style="@style/WhiteFontBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:gravity="center"
+                android:paddingVertical="3dp"
+                android:text="@string/add_profileimage_suggestion"
+                android:textSize="12sp"
+                android:theme="@style/Theme.MaterialComponents.Light"/>
+
+            <TextView
+                android:id="@+id/businessName_user_profile"
+                style="@style/WhiteFontBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingVertical="9dp"
+                android:text="-"
+                android:textSize="16sp"
+                android:theme="@style/Theme.MaterialComponents.Light" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="0dp"
+                    style="@style/WhiteFontBold"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-"/>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    style="@style/WhiteFontBold"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="0dp"
+                    style="@style/WhiteFont"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/businesses"/>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    style="@style/WhiteFont"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/transactions"/>
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
         <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
             android:fillViewport="true"
+            android:background="@color/colorPrimaryWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_fragment_header">
+            app:layout_constraintTop_toBottomOf="@+id/profile_topBody">
 
 
             <LinearLayout
                 android:id="@+id/linear_account_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/image_profilePage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/profile_image_header"
-                        style="@style/DarkFontItalic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Foto de perfil"
-                        android:textSize="16sp" />
-
-                    <ImageView
-                        android:id="@+id/pic_preview_profile"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:background="@drawable/round_outline"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="16dp"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/ic_profile_icon" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/name_layout_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        android:id="@+id/businessName_header_profile"
-                        style="@style/DarkFontItalic"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nombre de empresa"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/businessName_user_profile"
-                        style="@style/DarkFontBold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:ems="10"
-                        android:paddingVertical="9dp"
-                        android:text="-"
-                        android:textSize="16sp"
-                        android:theme="@style/Theme.MaterialComponents.Light" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/location_layout_profile"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:orientation="vertical">
+                    android:layout_height="80dp"
+                    android:background="@color/colorPrimaryTransparent"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/location_header_profile"
-                        style="@style/DarkFontItalic"
-                        android:layout_width="match_parent"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
+                        android:gravity="center"
                         android:layout_height="wrap_content"
-                        android:text="Ubicacion"
-                        android:textSize="16sp" />
+                        android:text="@string/address"
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/location_user_profile"
                         style="@style/DarkFontBold"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="16dp"
                         android:ems="10"
-                        android:paddingVertical="9dp"
                         android:text="-"
-                        android:textSize="16sp"
-                        android:theme="@style/Theme.MaterialComponents.Light" />
+                        android:textSize="13sp"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/seller_delivery"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/delivery_header"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_gravity="center"
+                        android:text="@string/delivery"
+                        android:textSize="15sp" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_gravity="center"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="8dp"
+                        >
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/delivery_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_centerInParent="true"
+                            app:thumbTint="@color/colorPrimary"
+                            app:track="@drawable/switch_states"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </RelativeLayout>
+
+
 
 
                 </LinearLayout>
@@ -146,41 +292,60 @@
                 <LinearLayout
                     android:id="@+id/delivery_range_profileLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:orientation="vertical">
+                    android:layout_height="95dp"
+                    android:background="@color/colorPrimaryTransparent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/deliveryRange_header_profile"
-                        style="@style/DarkFontItalic"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Delivery Range (mi)"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/delivery_range_profile"
-                        style="@style/DarkFontBold"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:ems="10"
-                        android:paddingVertical="9dp"
-                        android:text="0"
-                        android:textSize="16sp"
-                        android:theme="@style/Theme.MaterialComponents.Light" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/deliveryRange_header_profile"
+                            style="@style/DarkFont"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginVertical="8dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="wrap_content"
+                            android:text="@string/delivery_range"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/delivery_range_profile"
+                            style="@style/DarkFontBold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginVertical="8dp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:text="0"
+                            android:textSize="17sp"
+                            android:theme="@style/Theme.MaterialComponents.Light" />
+
+
+                    </LinearLayout>
+
+
 
                     <SeekBar
                         android:id="@+id/test_seekBar"
                         android:layout_width="match_parent"
-                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="8dp"
                         android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:progressBackgroundTint="@color/colorAccent"
-                        android:progressTint="@color/colorPrimary"
-                        android:thumbTint="@color/colorPrimary"
+                        android:maxHeight="4dp"
+                        android:minHeight="4dp"
+                        android:progressDrawable="@drawable/customer_seekbar"
+                        android:thumb="@drawable/custom_thumb"
                         />
 
 
@@ -189,30 +354,85 @@
                 <LinearLayout
                     android:id="@+id/delivery_fee_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:orientation="vertical">
+                    android:layout_height="80dp"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/delivery_fee_header"
-                        style="@style/DarkFontItalic"
-                        android:layout_width="match_parent"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
                         android:layout_height="wrap_content"
-                        android:text="Delivery Fee"
-                        android:textSize="16sp" />
+                        android:text="@string/delivery_fee"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:text="Q"
+                        style="@style/DarkFont"
+                        android:gravity="center"
+                        android:textSize="15sp"/>
 
                     <EditText
                         android:id="@+id/delivery_fee_profile"
                         style="@style/DarkFontBold"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginVertical="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="number"
                         android:ems="10"
-                        android:paddingVertical="9dp"
                         android:text="0"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
+                        android:theme="@style/Theme.MaterialComponents.Light" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/delivery_time_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:visibility="gone"
+                    android:background="@color/colorPrimaryTransparent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/delivery_time_header"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/delivery_time_profile"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/delivery_time_profile"
+                        style="@style/DarkFontBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:gravity="center"
+                        android:ems="10"
+                        android:text="0"
+                        android:textSize="17sp"
                         android:theme="@style/Theme.MaterialComponents.Light" />
 
 
@@ -221,59 +441,136 @@
                 <LinearLayout
                     android:id="@+id/seller_visibility"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:orientation="vertical">
+                    android:layout_height="80dp"
+                    android:background="@color/colorPrimaryTransparent"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/visibility_header"
-                        style="@style/DarkFontItalic"
-                        android:layout_width="match_parent"
+                        style="@style/DarkFont"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Visibility"
-                        android:textSize="16sp" />
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_gravity="center"
+                        android:text="@string/visibility"
+                        android:textSize="15sp" />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="8dp"
+                        >
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/visibility_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_centerInParent="true"
+                            app:thumbTint="@color/colorPrimary"
+                            app:track="@drawable/switch_states"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </RelativeLayout>
+
+
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/invite_client_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/visibility_text"
-                        style="@style/DarkFontBold"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="start"
-                        android:text="-"
-                        android:textSize="16sp" />
-
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/visibility_switch"
-                        android:layout_width="70dp"
+                        android:id="@+id/inviteClient_header"
+                        style="@style/DarkFont"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        app:thumbTint="@color/colorPrimary"
+                        android:layout_gravity="center"
                         android:layout_height="wrap_content"
-                        />
+                        android:text="@string/invite_client_privateList"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/invite_client_button"
+                        style="@style/WhiteFontBold"
+                        android:layout_marginVertical="16dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@drawable/dark_button"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/invite_client"
+                        android:textSize="15sp" />
 
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/shareApp_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@color/colorPrimaryTransparent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/shareApp_header"
+                        style="@style/DarkFont"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="@string/share_waybil_buyers"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/shareApp_button"
+                        style="@style/WhiteFontBold"
+                        android:layout_marginVertical="16dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@drawable/dark_button"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/share"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
                     android:id="@+id/action_buttons_profile"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="32dp"
+                    android:layout_height="80dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/manageSettings_profilePage"
-                        style="@style/WhiteFont"
+                        style="@style/WhiteFontBold"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginHorizontal="4dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
                         android:background="@drawable/dark_button"
                         android:gravity="center"
                         android:paddingHorizontal="8dp"
@@ -282,27 +579,21 @@
 
                     <TextView
                         android:id="@+id/save_profilePage"
-                        style="@style/WhiteFont"
+                        style="@style/WhiteFontBold"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginHorizontal="4dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="16dp"
                         android:layout_weight="1"
                         android:background="@drawable/dark_button"
                         android:gravity="center"
                         android:paddingHorizontal="8dp"
-                        android:text="Save Changes"
-                        android:textSize="15sp" />
+                        android:text="@string/save_changes"
+                        android:textSize="13sp" />
 
 
                 </LinearLayout>
-
-
-
-
-
-
-
             </LinearLayout>
         </ScrollView>
 

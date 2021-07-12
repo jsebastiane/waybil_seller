@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Historial"
+            android:text="@string/history"
             style="@style/FragmentHeaders"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +55,7 @@
                 android:textColor="@drawable/category_text_selector"
                 android:textOff="@null"
                 android:textOn="@null"
-                tools:text="Month" />
+                tools:text="@string/month" />
 
             <ToggleButton
                 android:id="@+id/toggle_year"
@@ -71,35 +71,20 @@
                 android:textColor="@drawable/category_text_selector"
                 android:textOff="@null"
                 android:textOn="@null"
-                tools:text="Year" />
-
-            <ToggleButton
-                android:id="@+id/toggle_view"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/category_selector_toggle"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="@drawable/category_text_selector"
-                android:visibility="gone"
-                android:textOff="View"
-                android:textOn="Summary"
-                tools:text="View" />
+                tools:text="@string/year" />
 
 
         </LinearLayout>
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/transaction_summaries_recycler"
+            android:id="@+id/transactions_recycler"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/transactionsTotal_LinearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subcategory_linearLayout" />
@@ -108,7 +93,7 @@
             android:id="@+id/no_data_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No data available"
+            android:text="@string/no_data_to_show"
             style="@style/DarkFontBold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -121,14 +106,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/transactions_toggle_filters">
-
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/years_filter_recycler"
@@ -137,10 +121,12 @@
                 android:visibility="gone"
                 android:orientation="horizontal"/>
 
+
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
 
                 <RadioGroup
                     android:id="@+id/radio_group_month"
@@ -156,7 +142,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="Jan"
+                        android:text="@string/jan"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -170,7 +156,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="Feb"
+                        android:text="@string/feb"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -184,7 +170,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="Mar"
+                        android:text="@string/mar"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -198,7 +184,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="Apr"
+                        android:text="@string/apr"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -212,7 +198,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="May"
+                        android:text="@string/may"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -226,7 +212,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="Jun"
+                        android:text="@string/jun"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -240,7 +226,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="July"
+                        android:text="@string/jul"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -254,7 +240,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="Aug"
+                        android:text="@string/aug"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -268,7 +254,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="Sep"
+                        android:text="@string/sep"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -282,7 +268,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="Oct"
+                        android:text="@string/oct"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -296,7 +282,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="Nov"
+                        android:text="@string/nov"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -310,7 +296,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/category_selector_toggle"
                         android:button="@null"
-                        android:text="Dec"
+                        android:text="@string/dec"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@drawable/subcategory_text_selector"
@@ -322,21 +308,47 @@
 
             </HorizontalScrollView>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/dark_button"
+                />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/random_button"
-            android:background="@drawable/dark_button"
-            style="@style/WhiteFont"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/transactions_fragment_header"
-            app:layout_constraintEnd_toStartOf="@+id/close_fragment_transactions"
-            app:layout_constraintStart_toEndOf="@+id/transactions_fragment_header"
-            app:layout_constraintTop_toTopOf="@+id/transactions_fragment_header" />
+        <LinearLayout
+            android:id="@+id/transactionsTotal_LinearLayout"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                style="@style/WhiteFontBold"
+                android:id="@+id/transactionsTotal_header"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:text="@string/monthly_total"/>
+
+            <TextView
+                style="@style/WhiteFontBold"
+                android:id="@+id/transactionsTotal_transactionsFragment"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:text="---"/>
+
+
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

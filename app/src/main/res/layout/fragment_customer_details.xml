@@ -17,7 +17,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:text="Tienda Don Juan"
+            android:text="-"
             android:gravity="start"
             app:layout_constraintEnd_toStartOf="@+id/close_fragment_customerDetails"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_gravity="top"
-                android:text="6a Avenida, Villa Nueva"
+                android:text="-"
                 android:textSize="15sp"
                 android:layout_marginBottom="4dp"/>
 
@@ -63,14 +63,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="+502 5562-0749"
-                android:layout_gravity="top"
+                android:text="-"
+                android:layout_gravity="center"
                 android:layout_marginBottom="4dp"
                 android:textSize="15sp" />
         </LinearLayout>
 
 
-        <saymobile.company.saytech.util.CustomeNestedScrollView
+        <waybilmobile.company.waybil.util.CustomeNestedScrollView
             android:id="@+id/customerDetails_scrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -87,52 +87,46 @@
 
                 <fragment
                     android:id="@+id/customerDetails_map"
-                    android:name="saymobile.company.saytech.util.CustomSupportMapFragment"
+                    android:name="waybilmobile.company.waybil.util.CustomSupportMapFragment"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="4dp" />
 
+
+
                 <RadioGroup
-                    android:id="@+id/radioGroup"
+                    android:id="@+id/radioGroup_customerDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
-                    android:checkedButton="@id/radioOverview"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/radioOverview"
+                        android:id="@+id/radioSummary_customerDetails"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:button="@null"
-                        android:text="Resumen"
+                        android:focusable="true"
+                        android:text="@string/summary"
                         android:textAlignment="center"
                         android:textColor="@drawable/category_inverseselector_toggle"
                         android:textSize="15sp" />
 
-                    <RadioButton
-                        android:id="@+id/radioOrders"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:button="@null"
-                        android:text="Ordenes"
-                        android:textAlignment="center"
-                        android:textColor="@drawable/category_inverseselector_toggle"
-                        android:textSize="15sp" />
+
 
                     <RadioButton
-                        android:id="@+id/radioBilling"
+                        android:id="@+id/radioTransactions_customerDetails"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:button="@null"
-                        android:text="Historial"
+                        android:text="@string/transactions"
+                        android:focusable="true"
                         android:textAlignment="center"
                         android:textColor="@drawable/category_inverseselector_toggle"
                         android:textSize="15sp" />
@@ -140,140 +134,151 @@
                 </RadioGroup>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/summary_customerDetails"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:visibility="gone"
                     android:layout_marginTop="8dp">
 
 
-                    <TextView
-                        android:id="@+id/avg_order_size"
-                        style="@style/DarkFontItalic"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center"
-                        android:text="Orden Promedio"
-                        app:layout_constraintBottom_toBottomOf="@+id/order_frequency"
-                        app:layout_constraintEnd_toStartOf="@+id/order_frequency"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/order_frequency" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/order_frequency"
-                        style="@style/DarkFontItalic"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="Frecuencia"
-                        app:layout_constraintEnd_toStartOf="@+id/average_spend"
-                        app:layout_constraintHorizontal_chainStyle="packed"
-                        app:layout_constraintStart_toEndOf="@+id/avg_order_size"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="@drawable/dark_button"
+                            android:layout_height="50dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/average_spend"
-                        style="@style/DarkFontItalic"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:gravity="center"
-                        android:text="Gasto Promedio"
-                        app:layout_constraintBottom_toBottomOf="@+id/order_frequency"
+                            <TextView
+                                style="@style/WhiteFont"
+                                android:id="@+id/ordersMadeHeader_customerDetails"
+                                android:layout_width="0dp"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:layout_height="match_parent"
+                                android:text="@string/orders_made" />
+                            <TextView
+                                style="@style/WhiteFont"
+                                android:id="@+id/ordersMade_customerDetails"
+                                android:layout_width="0dp"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:layout_height="match_parent"
+                                android:text="---" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/dark_button"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/WhiteFont"
+                                android:id="@+id/moneySpentHeader_customerDetails"
+                                android:layout_width="0dp"
+                                android:gravity="center"
+                                android:layout_weight="2"
+                                android:layout_height="match_parent"
+                                android:text="@string/money_spent" />
+                            <TextView
+                                style="@style/WhiteFont"
+                                android:id="@+id/moneySpent_customerDetails"
+                                android:layout_width="0dp"
+                                android:gravity="center"
+                                android:layout_weight="3"
+                                android:layout_height="match_parent"
+                                android:text="---" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginHorizontal="8dp"
+                            android:background="@drawable/dark_button"
+                            android:layout_height="50dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/WhiteFont"
+                                android:id="@+id/lastOrderHeader_customerDetails"
+                                android:layout_width="0dp"
+                                android:gravity="center"
+                                android:layout_weight="2"
+                                android:layout_height="match_parent"
+                                android:text="@string/recent_order" />
+
+                            <TextView
+                                style="@style/WhiteFont"
+                                android:id="@+id/lastOrder_customerDetails"
+                                android:layout_width="0dp"
+                                android:gravity="center"
+                                android:layout_weight="3"
+                                android:layout_height="match_parent"
+                                android:text="---" />
+
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/transactions_CustomerDetails"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:visibility="visible">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/transactionsRecycler_CustomerDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/order_frequency"
-                        app:layout_constraintTop_toTopOf="@+id/order_frequency" />
-
-                    <TextView
-                        android:id="@+id/average_orderSize_figure"
-                        style="@style/DarkFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:gravity="center"
-                        android:text="25"
-                        android:textSize="20sp"
-                        app:layout_constraintEnd_toEndOf="@+id/avg_order_size"
-                        app:layout_constraintStart_toStartOf="@+id/avg_order_size"
-                        app:layout_constraintTop_toTopOf="@+id/order_frequency_figure" />
-
-                    <TextView
-                        android:id="@+id/order_frequency_figure"
-                        style="@style/DarkFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:gravity="center"
-                        android:text="3x"
-                        android:textSize="20sp"
-                        app:layout_constraintEnd_toEndOf="@+id/order_frequency"
-                        app:layout_constraintStart_toStartOf="@+id/order_frequency"
-                        app:layout_constraintTop_toBottomOf="@+id/order_frequency" />
-
-                    <TextView
-                        android:id="@+id/average_spend_figure"
-                        style="@style/DarkFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:gravity="center"
-                        android:text="$100k"
-                        android:textSize="20sp"
-                        app:layout_constraintEnd_toEndOf="@+id/average_spend"
-                        app:layout_constraintStart_toStartOf="@+id/average_spend"
-                        app:layout_constraintTop_toTopOf="@+id/order_frequency_figure" />
-
-                    <TextView
-                        android:id="@+id/subheader_order_size"
-                        style="@style/DarkFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="Productos"
-                        android:textSize="15sp"
-                        app:layout_constraintEnd_toEndOf="@+id/average_orderSize_figure"
-                        app:layout_constraintStart_toStartOf="@+id/average_orderSize_figure"
-                        app:layout_constraintTop_toBottomOf="@+id/average_orderSize_figure" />
-
-                    <TextView
-                        android:id="@+id/subheader_order_frequency"
-                        style="@style/DarkFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="Cada sem."
-                        android:textSize="15sp"
-                        app:layout_constraintEnd_toEndOf="@+id/order_frequency_figure"
-                        app:layout_constraintStart_toStartOf="@+id/order_frequency_figure"
-                        app:layout_constraintTop_toBottomOf="@+id/order_frequency_figure" />
-
-                    <TextView
-                        android:id="@+id/subheader_average_spend"
-                        style="@style/DarkFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:gravity="center"
-                        android:text="Cada sem."
-                        android:textSize="15sp"
-                        app:layout_constraintEnd_toEndOf="@+id/average_spend_figure"
-                        app:layout_constraintStart_toStartOf="@+id/average_spend_figure"
-                        app:layout_constraintTop_toBottomOf="@+id/average_spend_figure" />
-
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <ProgressBar
+                    android:id="@+id/progressBar_customerDetails"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:padding="90dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/transactionMessage_customerDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/no_data_to_show"
+                    android:textSize="15sp"
+                    style="@style/DarkFontBold"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    />
+
 
             </LinearLayout>
-        </saymobile.company.saytech.util.CustomeNestedScrollView>
+        </waybilmobile.company.waybil.util.CustomeNestedScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Agregar Producto"
+            android:text="@string/add_product"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,8 +40,10 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_product_header">
+            app:layout_constraintTop_toBottomOf="@+id/add_product_header"
+            app:layout_constraintVertical_bias="1.0">
 
             <LinearLayout
                 android:id="@+id/linear_layout_addProduct"
@@ -64,7 +66,7 @@
                         style="@style/DarkFontItalic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nombre de producto"
+                        android:text="@string/product_name"
                         android:textSize="16sp" />
 
                     <EditText
@@ -73,9 +75,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/information_fields"
+                        android:background="@drawable/information_fields_dark"
                         android:ems="10"
-                        android:hint="Enter product name"
+                        android:hint="@string/enter_product_name"
                         android:inputType="textPersonName"
                         android:padding="8dp"
                         android:textSize="16sp"
@@ -97,7 +99,7 @@
                         style="@style/DarkFontItalic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Marca"
+                        android:text="@string/product_brand"
                         android:textSize="16sp" />
 
                     <EditText
@@ -106,9 +108,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/information_fields"
+                        android:background="@drawable/information_fields_dark"
                         android:ems="10"
-                        android:hint="Enter brand name "
+                        android:hint="@string/enter_brand_name"
                         android:inputType="textPersonName"
                         android:padding="8dp"
                         android:textSize="16sp"
@@ -130,7 +132,7 @@
                         style="@style/DarkFontItalic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Código de referencia"
+                        android:text="@string/product_sku"
                         android:textSize="16sp" />
 
                     <EditText
@@ -139,9 +141,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/information_fields"
+                        android:background="@drawable/information_fields_dark"
                         android:ems="10"
-                        android:hint="eg. SKU142657"
+                        android:hint="@string/sku_hint_text"
                         android:inputType="text"
                         android:padding="8dp"
                         android:textSize="16sp"
@@ -163,7 +165,7 @@
                         style="@style/DarkFontItalic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Categoría"
+                        android:text="@string/product_category"
                         android:textSize="16sp" />
 
                     <EditText
@@ -172,9 +174,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/information_fields"
+                        android:background="@drawable/information_fields_dark"
                         android:ems="10"
-                        android:hint="Eg. drink, food, toiletries..."
+                        android:hint="@string/product_category_hint"
                         android:inputType="text"
                         android:padding="8dp"
                         android:textSize="16sp"
@@ -196,7 +198,7 @@
                         style="@style/DarkFontItalic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tipo"
+                        android:text="@string/product_type"
                         android:textSize="16sp" />
 
                     <EditText
@@ -205,130 +207,180 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/information_fields"
+                        android:background="@drawable/information_fields_dark"
                         android:ems="10"
-                        android:hint="Eg. soda, agua, papalinas..."
+                        android:hint="@string/product_type_hint"
                         android:inputType="text"
                         android:padding="8dp"
                         android:textSize="16sp"
                         android:theme="@style/Theme.MaterialComponents.Light" />
                 </LinearLayout>
+
+
+
+
+                    <TextView
+                        android:id="@+id/itemDescrip_header"
+                        style="@style/WhiteFontItalic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/transaction_bg"
+                        android:gravity="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:padding="8dp"
+                        android:text="@string/product_description"
+                        android:textSize="16sp"
+                        android:theme="@style/Theme.MaterialComponents.Light" />
+
+                    <TextView
+                        android:id="@+id/itemDescrip_preview"
+                        style="@style/WhiteFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:gravity="center"
+                        android:background="@color/colorPrimary"
+                        android:layout_marginEnd="8dp"
+                        android:padding="8dp"
+                        android:textSize="16sp"
+                        android:theme="@style/Theme.MaterialComponents.Light" />
+
 
                 <LinearLayout
                     android:id="@+id/headers_metrics_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_marginEnd="8dp"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/units_add_header"
-                        style="@style/DarkFontItalic"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Unidades" />
-
-                    <TextView
-                        style="@style/DarkFontItalic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:gravity="center"
-                        android:text="x" />
-
-                    <TextView
                         android:id="@+id/size_per_itemHeader"
-                        style="@style/DarkFontItalic"
+                        style="@style/WhiteFontItalic"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Tamaño"
+                        android:text="@string/product_size"
                         android:textSize="16sp" />
 
                     <TextView
-                        style="@style/DarkFontItalic"
+                        style="@style/WhiteFontItalic"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="0.1"
                         android:gravity="center"
                         android:text="x" />
+
+                    <TextView
+                        android:id="@+id/units_add_header"
+                        style="@style/WhiteFontItalic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:text="@string/product_metric" />
+
+                    <TextView
+                        style="@style/WhiteFontItalic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:text="x" />
+
+
 
                     <TextView
                         android:id="@+id/quantity_per_itemHeader"
-                        style="@style/DarkFontItalic"
+                        style="@style/WhiteFontItalic"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Cantidad"
+                        android:text="@string/product_bulk_quantity"
                         android:textSize="16sp" />
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/headers_metrics_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/bottom_rounded_orders"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/units_add"
-                        style="@style/DarkFont"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="2dp"
-                        android:background="@drawable/information_fields"
-                        android:ems="10"
-                        android:hint="eg. ml"
-                        android:inputType="text"
-                        android:padding="8dp"
-                        android:textSize="16sp"
-                        android:theme="@style/Theme.MaterialComponents.Light" />
-
-                    <EditText
                         android:id="@+id/size_add"
-                        style="@style/DarkFont"
+                        style="@style/WhiteFont"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:background="@drawable/information_fields"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/information_fields_light"
+                        android:textColorHint="@color/colorLightGray"
                         android:ems="10"
-                        android:hint="eg. 500"
+                        android:hint="@string/product_size_hint"
                         android:inputType="numberDecimal"
                         android:padding="8dp"
                         android:textSize="16sp"
                         android:theme="@style/Theme.MaterialComponents.Light" />
 
                     <EditText
-                        android:id="@+id/quantityPerUnit_add"
-                        style="@style/DarkFont"
+                        android:id="@+id/units_add"
+                        style="@style/WhiteFont"
                         android:layout_width="0dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/information_fields"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/information_fields_light"
                         android:ems="10"
-                        android:hint="eg. 12"
+                        android:hint="@string/product_metric_hint"
+                        android:inputType="text"
+                        android:textColorHint="@color/colorLightGray"
+                        android:padding="8dp"
+                        android:textSize="16sp"
+                        android:theme="@style/Theme.MaterialComponents.Light" />
+
+
+
+                    <EditText
+                        android:id="@+id/quantityPerUnit_add"
+                        style="@style/WhiteFont"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:textColorHint="@color/colorLightGray"
+                        android:background="@drawable/information_fields_light"
+                        android:ems="10"
+                        android:hint="@string/bulk_quantity_hint"
                         android:inputType="number"
                         android:padding="8dp"
                         android:textSize="16sp"
                         android:theme="@style/Theme.MaterialComponents.Light" />
 
                 </LinearLayout>
+
+
+
 
                 <LinearLayout
                     android:id="@+id/salePrice_layout"
@@ -345,7 +397,7 @@
                         style="@style/DarkFontItalic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Precio"
+                        android:text="@string/price_quetzales_header"
                         android:textSize="16sp" />
 
                     <EditText
@@ -354,9 +406,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/information_fields"
+                        android:background="@drawable/information_fields_dark"
                         android:ems="10"
-                        android:hint="eg. 69.99"
+                        android:hint="@string/product_price_hint"
                         android:inputType="numberDecimal"
                         android:padding="8dp"
                         android:textSize="16sp"
@@ -364,7 +416,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/quantity_forSale_layout"
+                    android:id="@+id/quantity_available_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -374,22 +426,22 @@
 
 
                     <TextView
-                        android:id="@+id/quantity_forSale_header"
+                        android:id="@+id/quantity_available_header"
                         style="@style/DarkFontItalic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Cantidad disponible para venta"
+                        android:text="@string/product_inventory_available"
                         android:textSize="16sp" />
 
                     <EditText
-                        android:id="@+id/quantity_forSale"
+                        android:id="@+id/quantity_available"
                         style="@style/DarkFont"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/information_fields"
+                        android:background="@drawable/information_fields_dark"
                         android:ems="10"
-                        android:hint="eg. 64"
+                        android:hint="@string/product_available_hint"
                         android:inputType="number"
                         android:padding="8dp"
                         android:textSize="16sp"
@@ -404,7 +456,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="24dp"
-                    android:background="@drawable/information_fields"
+                    android:background="@drawable/information_fields_dark"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -412,9 +464,9 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"
-                        android:scaleType="centerCrop"
                         android:layout_marginVertical="8dp"
                         android:layout_marginStart="16dp"
+                        android:scaleType="centerCrop"
                         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
 
@@ -427,21 +479,20 @@
                         <TextView
                             android:id="@+id/browse_images"
                             style="@style/DarkFontItalic"
-                            android:background="@drawable/information_fields"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
+                            android:background="@drawable/information_fields_dark"
                             android:gravity="center"
-                            android:text="Buscar Imagen"
+                            android:text="@string/search_for_image"
                             android:textSize="16sp" />
 
                         <TextView
-                            android:background="@drawable/dark_button"
                             android:layout_width="match_parent"
-                            android:layout_marginHorizontal="15dp"
                             android:layout_height="1dp"
-                            android:gravity="center"
-                             />
+                            android:layout_marginHorizontal="15dp"
+                            android:background="@drawable/dark_button"
+                            android:gravity="center" />
 
 
                         <TextView
@@ -450,18 +501,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@drawable/information_fields"
+                            android:background="@drawable/information_fields_dark"
                             android:gravity="center"
-                            android:text="Tomar Foto"
+                            android:text="@string/capture_image"
                             android:textSize="16sp" />
-
 
 
                     </LinearLayout>
 
 
                 </LinearLayout>
-
 
 
                 <LinearLayout
@@ -481,7 +530,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/light_button"
                         android:gravity="center"
-                        android:text="Cancelar"
+                        android:text="@string/cancel"
                         android:textAppearance="@style/DarkFont"
                         android:textSize="18sp" />
 
@@ -494,7 +543,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/dark_button"
                         android:gravity="center"
-                        android:text="Aceptar"
+                        android:text="@string/add"
                         android:textAppearance="@style/WhiteFont"
                         android:textSize="18sp" />
 

@@ -9,6 +9,11 @@
         <item name="android:fontFamily">@font/futura_medium</item>
     </style>
 
+    <style name="LogoFont">
+        <item name="android:textColor">@color/colorPrimaryWhite</item>
+        <item name="android:fontFamily">@font/astro_space</item>
+    </style>
+
 
     <style name="WhiteFont">
         <item name="android:textColor">@color/colorPrimaryWhite</item>
@@ -56,6 +61,13 @@
     <style name="FragmentHeaders">
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:fontFamily">@font/futura_medium</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="FragmentHeadersLight">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorPrimaryWhite</item>
         <item name="android:fontFamily">@font/futura_medium</item>
         <item name="android:textSize">24sp</item>
     </style>
