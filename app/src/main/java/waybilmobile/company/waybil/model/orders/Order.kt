@@ -1,9 +1,12 @@
 package waybilmobile.company.waybil.model.orders
 
 import com.google.firebase.Timestamp
+import com.google.firebase.encoders.annotations.Encodable
+import com.google.firebase.firestore.IgnoreExtraProperties
 import waybilmobile.company.waybil.model.user.User
 import waybilmobile.company.waybil.model.user.UserBusiness
 
+@IgnoreExtraProperties
 data class Order (
     val orderId: String = "",
     val seller: User? = null,

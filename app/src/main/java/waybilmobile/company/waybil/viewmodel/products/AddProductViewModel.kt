@@ -70,31 +70,27 @@ class AddProductViewModel : ViewModel() {
 
     fun makeProductObject(
         productName: String,
-        unitType: String,
-        itemsPerSKU: Int,
-        sizePerItem: Double,
         skuNumber: String,
         priceOfSKU: Double,
         brandName: String,
         productType: String,
         category: String,
         itemsAvailable: Int,
-        imageUri: ByteArray
+        imageUri: ByteArray,
+        productDetails: String
     ) {
 
         val newImageRef = UUID.randomUUID().toString()
         val newProduct = Product(
             productName,
-            unitType,
-            itemsPerSKU,
-            sizePerItem,
             skuNumber,
             priceOfSKU,
             brandName,
             productType,
             category,
             itemsAvailable,
-            newImageRef
+            newImageRef,
+            productDetails
         )
         uploadProduct(newProduct, imageUri)
     }

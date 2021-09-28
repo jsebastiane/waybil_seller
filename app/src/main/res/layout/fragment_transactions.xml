@@ -73,6 +73,17 @@
                 android:textOn="@null"
                 tools:text="@string/year" />
 
+            <TextView
+                android:visibility="gone"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:text="csv"
+                style="@style/WhiteFont"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:background="@drawable/dark_button"/>
+
 
         </LinearLayout>
 

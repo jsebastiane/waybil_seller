@@ -216,170 +216,39 @@
                         android:theme="@style/Theme.MaterialComponents.Light" />
                 </LinearLayout>
 
-
-
-
-                    <TextView
-                        android:id="@+id/itemDescrip_header"
-                        style="@style/WhiteFontItalic"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/transaction_bg"
-                        android:gravity="center"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:padding="8dp"
-                        android:text="@string/product_description"
-                        android:textSize="16sp"
-                        android:theme="@style/Theme.MaterialComponents.Light" />
-
-                    <TextView
-                        android:id="@+id/itemDescrip_preview"
-                        style="@style/WhiteFont"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:gravity="center"
-                        android:background="@color/colorPrimary"
-                        android:layout_marginEnd="8dp"
-                        android:padding="8dp"
-                        android:textSize="16sp"
-                        android:theme="@style/Theme.MaterialComponents.Light" />
-
-
                 <LinearLayout
-                    android:id="@+id/headers_metrics_layout"
+                    android:id="@+id/unit_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:background="@color/colorPrimary"
-                    android:layout_marginEnd="8dp"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical">
+
 
                     <TextView
-                        android:id="@+id/size_per_itemHeader"
-                        style="@style/WhiteFontItalic"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/product_size"
+                        android:id="@+id/unit_header"
+                        style="@style/DarkFontItalic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/unit_description"
                         android:textSize="16sp" />
 
-                    <TextView
-                        style="@style/WhiteFontItalic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:gravity="center"
-                        android:text="x" />
-
-                    <TextView
-                        android:id="@+id/units_add_header"
-                        style="@style/WhiteFontItalic"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="16sp"
-                        android:gravity="center"
-                        android:text="@string/product_metric" />
-
-                    <TextView
-                        style="@style/WhiteFontItalic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:textSize="16sp"
-                        android:gravity="center"
-                        android:text="x" />
-
-
-
-                    <TextView
-                        android:id="@+id/quantity_per_itemHeader"
-                        style="@style/WhiteFontItalic"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/product_bulk_quantity"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/headers_metrics_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bottom_rounded_orders"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:orientation="horizontal">
-
                     <EditText
-                        android:id="@+id/size_add"
-                        style="@style/WhiteFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/information_fields_light"
-                        android:textColorHint="@color/colorLightGray"
-                        android:ems="10"
-                        android:hint="@string/product_size_hint"
-                        android:inputType="numberDecimal"
-                        android:padding="8dp"
-                        android:textSize="16sp"
-                        android:theme="@style/Theme.MaterialComponents.Light" />
-
-                    <EditText
-                        android:id="@+id/units_add"
-                        style="@style/WhiteFont"
-                        android:layout_width="0dp"
+                        android:id="@+id/unit_add"
+                        style="@style/DarkFont"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/information_fields_light"
+                        android:background="@drawable/information_fields_dark"
                         android:ems="10"
-                        android:hint="@string/product_metric_hint"
+                        android:hint="ej. 50g x 10, un carton, una docena"
                         android:inputType="text"
-                        android:textColorHint="@color/colorLightGray"
+                        android:maxLength="30"
                         android:padding="8dp"
                         android:textSize="16sp"
                         android:theme="@style/Theme.MaterialComponents.Light" />
-
-
-
-                    <EditText
-                        android:id="@+id/quantityPerUnit_add"
-                        style="@style/WhiteFont"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
-                        android:textColorHint="@color/colorLightGray"
-                        android:background="@drawable/information_fields_light"
-                        android:ems="10"
-                        android:hint="@string/bulk_quantity_hint"
-                        android:inputType="number"
-                        android:padding="8dp"
-                        android:textSize="16sp"
-                        android:theme="@style/Theme.MaterialComponents.Light" />
-
                 </LinearLayout>
-
-
 
 
                 <LinearLayout

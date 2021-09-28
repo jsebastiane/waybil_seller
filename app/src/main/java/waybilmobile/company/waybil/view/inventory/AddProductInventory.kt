@@ -41,9 +41,7 @@ class AddProductInventory : Fragment() {
 
     private lateinit var viewModel: AddProductViewModel
     private var productImage: ByteArray? = null
-    private var unitsText: String = ""
-    private var sizeText: String = ""
-    private var quantityText: String = ""
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,21 +75,6 @@ class AddProductInventory : Fragment() {
             checkImagePermissions()
         }
 
-        units_add.afterTextChanged {
-            unitsText = it
-            updatePreview()
-        }
-
-        quantityPerUnit_add.afterTextChanged {
-            quantityText = it
-            updatePreview()
-        }
-
-        size_add.afterTextChanged {
-            sizeText = it
-            updatePreview()
-        }
-
         observeViewModels()
     }
 
@@ -115,9 +98,7 @@ class AddProductInventory : Fragment() {
         val brandName = brand_name_add.text.toString()
         val skuNumber = sku_id_add.text.toString()
         val category = category_add.text.toString()
-        val unitType = units_add.text.toString()
-        val sizePerItem = size_add.text.toString()
-        val itemsPerSKU = quantityPerUnit_add.text.toString()
+        val productDetails = unit_add.text.toString()
         val priceOfSKU = String.format("%.2f", salePrice_add.text.toString().toDouble())
         val itemsAvailable = quantity_available.text.toString()
         val productType = type_add.text.toString()
@@ -147,17 +128,8 @@ class AddProductInventory : Fragment() {
             Toast.makeText(activity, R.string.enter_category, Toast.LENGTH_SHORT).show()
             return
         }
-        if (unitType.isEmpty()) {
+        if (productDetails.isEmpty()) {
             Toast.makeText(activity, R.string.enter_unit_of_measurement, Toast.LENGTH_SHORT).show()
-            return
-        }
-        if (sizePerItem.isEmpty()) {
-            Toast.makeText(activity, R.string.enter_size_per_unit, Toast.LENGTH_SHORT).show()
-            return
-        }
-        //CHANGE THIS LABELING LATER
-        if (itemsPerSKU.isEmpty()) {
-            Toast.makeText(activity, R.string.enter_quantity_per_unit, Toast.LENGTH_SHORT).show()
             return
         }
         if (priceOfSKU.isEmpty()) {
@@ -183,16 +155,14 @@ class AddProductInventory : Fragment() {
 
         viewModel.makeProductObject(
             productName,
-            unitType,
-            itemsPerSKU.toInt(),
-            sizePerItem.toDouble(),
             skuNumber,
             priceOfSKU.toDouble(),
             brandName,
             productType,
             category,
             itemsAvailable.toInt(),
-            productImage!!
+            productImage!!,
+            productDetails
         )
 
 
@@ -356,10 +326,6 @@ class AddProductInventory : Fragment() {
         })
     }
 
-    private fun updatePreview() {
-        val text = "$sizeText$unitsText x $quantityText"
-        itemDescrip_preview.text = text
-    }
 
 //    @Throws(IOException::class)
 //    private fun createImageFile(): File {

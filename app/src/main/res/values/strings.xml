@@ -114,7 +114,7 @@
     <string name="bulk_quantity_hint">ej. 12</string>
     <string name="product_price">Precio</string>
     <string name="product_price_hint">ej. 69.99</string>
-    <string name="product_inventory_available">Producto en existencia</string>
+    <string name="product_inventory_available">Unidades en existencia</string>
     <string name="product_available_hint">ej. 64</string>
     <string name="search_for_image">Buscar Imagen</string>
     <string name="capture_image">Tomar Foto</string>
@@ -205,7 +205,8 @@
     <string name="share_location">Compartir Ubicación</string>
     <string name="distributor_colon">Vendedor:</string>
     <string name="pin_order_instructions">Ingrese el pin (disponible en la app del cliente) para completar el pedido</string>
-    <string name="price_quetzales_header">Precio (Quetzales)</string>
+    <string name="price_quetzales_header">Precio por unidad (Quetzales)</string>
+    <string name="unit_description">Unidad/Descripción</string>
 
 
 </resources>
