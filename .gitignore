@@ -76,3 +76,7 @@ TEST*.xml
 *.mov
 *.wmv
 
+#Local properties
+android/local.properties
+.android/local.properties
+
