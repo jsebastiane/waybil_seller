@@ -41,6 +41,10 @@ build/
 captures/
 output.json
 
+
+#google-services.json
+google-services.json
+
 #NDK
 obj/
 .externalNativeBuild
