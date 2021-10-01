@@ -14,7 +14,7 @@
   <img src="https://github.com/jsebastiane/waybil_seller/blob/master/Seller%20Screenshots/Screenshot_20210907-211544.jpg" width="200" title="hover text">
   <img src="https://github.com/jsebastiane/waybil_seller/blob/master/Seller%20Screenshots/Screenshot_20210911-172008.jpg" width="200" title="hover text">
   <img src="https://github.com/jsebastiane/waybil_seller/blob/master/Seller%20Screenshots/Screenshot_20210911-171956.jpg" width="200" title="hover text">
-  <img src="https://github.com/jsebastiane/waybil_seller/blob/master/Seller%20Screenshots/Screenshot_20210911-171956.jpg" width="200" title="hover text">
+  <img src="https://github.com/jsebastiane/waybil_seller/blob/master/Seller%20Screenshots/Screenshot_20210627-021054.jpg" width="200" title="hover text">
 </p>
 
 ### The seller app gives users the ability to:
