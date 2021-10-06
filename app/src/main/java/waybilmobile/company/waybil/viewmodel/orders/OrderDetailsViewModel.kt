@@ -81,6 +81,7 @@ class OrderDetailsViewModel : ViewModel() {
         _loading.value = false
     }
 
+
     @SuppressLint("SimpleDateFormat")
     fun updateOrderStatus() {
         _updatingOrder.value = false

@@ -27,6 +27,8 @@ class AddProductViewModel : ViewModel() {
         get() = _failedUpload
 
 
+    //Uploading a new product and creating a metadata DB reference for this product to begin tracking
+    //sales data
     private fun uploadProduct(newProduct: Product, productImage: ByteArray) {
         _uploading.value = true
 //        val inventoryRef = inventoryReference.document(mAuth.currentUser!!.uid).collection("inventory")
@@ -43,8 +45,7 @@ class AddProductViewModel : ViewModel() {
     }
 
     private fun uploadNewProductImage(imageUri: ByteArray, skuNumber: String, imageRef: String) {
-//        val userId = mAuth.currentUser!!.uid
-//        val productImageRef = FirebaseStorage.getInstance().reference.child("/$userId/inventory/$skuNumber.jpeg")
+
         val productImageRef =
             FirebaseStorage.getInstance().reference.child("/$userId/inventory/$skuNumber/$imageRef.jpeg")
         val imageTask = productImageRef.putBytes(imageUri)

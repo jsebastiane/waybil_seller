@@ -22,7 +22,6 @@ import waybilmobile.company.waybil.viewmodel.inventory.InventoryViewModel
 class InventoryFragment : Fragment() {
 
     private lateinit var viewModel: InventoryViewModel
-    //    ArrayList<Product>() test this to see if it accomplishes the same thing
     private var inventoryListAdapter = InventoryListAdapter(arrayListOf())
     private var subCategoryAdapter = SubCategoryAdapter(arrayListOf())
     private var selectedFilterButton: ToggleButton? = null
